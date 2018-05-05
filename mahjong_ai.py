@@ -12,11 +12,20 @@ NUM_HIDDEN_LAYERS = 3
 H_SIZE = 200
 
 sess = None
-out = None
-train_step = None
-accuracy = None
+
 x = None
 y = None
+train_labels = None
+train_predictions = None
+test_labels = None
+test_predictions = None
+
+train_step = None
+out = None
+train_accuracy = None
+train_update_op = None
+test_accuracy = None
+test_update_op = None
 
 def make_model():
     global x
@@ -138,8 +147,9 @@ def run_ai():
                 tenpai_kuzusi_count += 1
         
     print("和了:" + str(agari_count))
-    print("和了時の平均点数:" + str(total_point / agari_count))
-    print("役:" + str(yaku_count))        
+    if agari_count > 0:
+        print("和了時の平均点数:" + str(total_point / agari_count))
+        print("役:" + str(yaku_count))        
     print("流局時聴牌:" + str(tenpai_count))
     print("聴牌崩し:" + str(tenpai_kuzusi_count))
 
@@ -204,8 +214,6 @@ def get_ai_dahai(ai_in, ai_out):
 
 
 if __name__ == "__main__":
-    #for windows
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
     arg_parser = argparse.ArgumentParser(prog = "mahjong_ai", add_help = True)
     arg_parser.add_argument("-r", "--run", help = "run AI", action = "store_true", default=False)
     arg_parser.add_argument("-t", "--train", help = "train AI", action = "store_true", default=False)
