@@ -214,6 +214,8 @@ def get_ai_dahai(ai_in, ai_out):
 
 
 if __name__ == "__main__":
+    #for windows
+    #sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
     arg_parser = argparse.ArgumentParser(prog = "mahjong_ai", add_help = True)
     arg_parser.add_argument("-r", "--run", help = "run AI", action = "store_true", default=False)
     arg_parser.add_argument("-t", "--train", help = "train AI", action = "store_true", default=False)
